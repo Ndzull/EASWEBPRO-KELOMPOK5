@@ -43,12 +43,12 @@ body {
 .login-page .card {
     width: 380px;
     padding: 40px;
-    border-radius: 12px; /* Disesuaikan dengan main CSS temanmu */
-    background-color: var(--color-surface); /* Memakai variabel palet warna */
+    border-radius: 12px; 
+    background-color: var(--color-surface); 
     border: 2px solid var(--color-text-dark);
-    box-shadow: 8px 8px 0px var(--color-text-dark); /* Bayangan solid / kaku */
+    box-shadow: 8px 8px 0px var(--color-text-dark); 
     text-align: center;
-    animation: fadeIn 0.8s ease; /* Animasi dipertahankan */
+    animation: fadeIn 0.8s ease; 
 }
 
 .login-page .card h2 {
@@ -282,3 +282,304 @@ header h1 {
   border-radius: 50%;
   margin: 0 auto 1.5rem auto;
   border: 2px solid}
+
+/* Admin Dashboard */
+.admin-body {
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--color-bg-main);
+    overflow-x: hidden;
+}
+
+.sidebar {
+    width: 260px;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    border-right: 3px solid var(--color-text-dark);
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.sidebar-header {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 3px solid var(--color-text-dark);
+    margin-bottom: 20px;
+}
+
+.sidebar-header h2 {
+    font-family: 'Jockey One', sans-serif;
+    margin: 0;
+    font-size: 32px;
+    color: var(--color-text-light);
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px var(--color-text-dark);
+}
+
+.sidebar-header p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--color-surface);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+}
+
+.sidebar-menu li {
+    margin-bottom: 8px;
+    padding: 0 15px;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-family: 'Jockey One', sans-serif;
+    font-size: 18px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.sidebar-menu a i {
+    margin-right: 15px; 
+}
+
+.sidebar-menu a:hover, 
+.sidebar-menu a.active {
+    background-color: var(--color-surface);
+    color: var(--color-text-dark);
+    border: 2px solid var(--color-text-dark);
+    box-shadow: 4px 4px 0px var(--color-text-dark);
+    transform: translate(-2px, -2px);
+}
+
+.sidebar-footer {
+    padding: 20px 15px;
+    border-top: 3px solid var(--color-text-dark);
+}
+
+.sidebar-footer .btn-logout {
+    display: block;
+    text-align: center;
+    background-color: #a86060;
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-family: 'Jockey One', sans-serif;
+    padding: 12px;
+    border: 2px solid var(--color-text-dark);
+    border-radius: 8px;
+    box-shadow: 4px 4px 0px var(--color-text-dark);
+    transition: all 0.2s ease;
+    font-size: 18px;
+}
+
+.sidebar-footer .btn-logout:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--color-text-dark);
+}
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.header-title {
+    font-family: 'Jockey One', sans-serif;
+    color: var(--color-text-dark);
+    margin-bottom: 30px;
+    font-size: 38px;
+    border-bottom: 3px solid var(--color-text-dark);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.summary-card {
+    background-color: var(--color-surface);
+    border: 3px solid var(--color-text-dark);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 8px 8px 0px var(--color-text-dark);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.2s ease;
+}
+
+.summary-card:hover {
+    transform: translate(4px, 4px);
+    box-shadow: 4px 4px 0px var(--color-text-dark);
+}
+
+.summary-card.pesanan {
+    background-color: #E2E8F0;
+}
+.summary-card.pesanan .card-icon {
+    background-color: #475569;
+}
+
+.summary-card.member {
+    background-color: #FEE2E2;
+}
+.summary-card.member .card-icon {
+    background-color: #991B1B;
+}
+
+.card-icon {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    border-radius: 8px;
+    border: 3px solid var(--color-text-dark);
+}
+
+.card-info h3 {
+    margin: 0;
+    font-family: 'Jockey One', sans-serif;
+    font-size: 42px;
+    color: var(--color-text-dark);
+    line-height: 1;
+}
+
+.card-info p {
+    margin: 5px 0 0 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.instruction-panel {
+    background: var(--color-surface);
+    border: 3px solid var(--color-text-dark);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 8px 8px 0px var(--color-text-dark);
+    
+}
+
+.instruction-panel h2 {
+    font-family: 'Jockey One', sans-serif;
+    border-bottom: 3px solid var(--color-text-dark);
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+.instruction-panel p {
+    margin: 5px 0 0 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    color: var(--color-dark);
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+/* Kelola Produk */
+.admin-table-container {
+    background: var(--color-text-light);
+    border: 3px solid var(--color-text-dark);
+    border-radius: 12px;
+    box-shadow: 8px 8px 0px var(--color-text-dark);
+    overflow: hidden; 
+    margin-top: 20px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th, 
+.admin-table td {
+    padding: 15px;
+    border-bottom: 2px solid var(--color-text-dark);
+    border-right: 2px solid var(--color-text-dark);
+    text-align: left;
+}
+
+.admin-table th:last-child, 
+.admin-table td:last-child {
+    border-right: none; 
+}
+
+.admin-table th {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    font-family: 'Jockey One', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none; 
+}
+
+.admin-table tbody tr:hover {
+    background-color: var(--color-surface);
+}
+
+.btn-action {
+    padding: 6px 12px;
+    border: 2px solid var(--color-text-dark);
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Jockey One', sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 2px 2px 0px var(--color-text-dark);
+    transition: all 0.2s ease;
+    color: var(--color-text-dark);
+    margin-right: 5px;
+}
+
+.btn-action:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px var(--color-text-dark);
+}
+
+.btn-edit { 
+    background-color: #FCD34D; 
+} 
+
+.btn-delete { 
+    background-color: #FCA5A5; 
+} 
+
+.img-preview {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 2px solid var(--color-text-dark);
+    border-radius: 4px;
+}
+
+/* Pesanan Masuk */
+.btn-success-brutal { 
+    background-color: #10B981; 
+}

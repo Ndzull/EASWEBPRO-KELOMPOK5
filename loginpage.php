@@ -70,6 +70,7 @@ if (isset($_POST['login'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StrikeGear - LOGIN</title>
+    <link rel="icon" href="assets/logo.png">
     <link rel="stylesheet" href="style.css?v=5">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -86,8 +87,10 @@ if (isset($_POST['login'])) {
     <div class="card">
 
         <form class="form login" method="POST" action="">
-            <h2>Welcome to<br><i>StrikeGear</i></h2>
-            
+            <div style="display:flex; align-items:center; justify-content:center; gap:15px; margin-bottom:15px;">
+                <img src="assets/logo.png" alt="Logo Strike Gear" class="login-logo" style="width:100px; height:auto;">
+                <h2 style="margin:0; spacing:0;"><span style="font-size:18px;">Welcome to</span><br><i>STRIKE GEAR</i></h2>
+            </div>
             <?php echo $pesan; ?>
 
             <input type="email" name="email" placeholder="Email" required>
