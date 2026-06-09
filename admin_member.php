@@ -81,10 +81,8 @@ $result_member = $conn->query($query_member);
                     if ($result_member && $result_member->num_rows > 0) {
                         $no = 1;
                         while ($row = $result_member->fetch_assoc()) {
-                            // Menggabungkan nama depan dan belakang
                             $nama_lengkap = $row['nama_depan'] . " " . $row['nama_belakang'];
                             
-                            // Mengubah format tanggal (Opsional, agar lebih enak dibaca)
                             $tgl_lahir = date("d-M-Y", strtotime($row['tanggal_lahir']));
 
                             echo "<tr>";

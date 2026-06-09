@@ -63,6 +63,7 @@ if (!$result_produk) {
                         <th>No</th>
                         <th>Foto</th>
                         <th>Nama Produk</th>
+                        <th>Kategori</th>
                         <th>Harga</th>
                         <th>Stok</th>
                         <th>Aksi</th>
@@ -71,7 +72,7 @@ if (!$result_produk) {
                 <tbody>
                     <?php
                     if (!empty($pesan_error_db)) {
-                        echo "<tr><td colspan='6' style='text-align: center; padding: 30px; background-color: #FCA5A5; color: #991B1B;'>
+                        echo "<tr><td colspan='7' style='text-align: center; padding: 30px; background-color: #FCA5A5; color: #991B1B;'>
                                 <b><i class='fa-solid fa-triangle-exclamation'></i> ERROR DATABASE:</b> <br>" . $pesan_error_db . " 
                               </td></tr>";
                     } 
@@ -85,6 +86,7 @@ if (!$result_produk) {
                             echo "<td><strong>" . $no++ . "</strong></td>";
                             echo "<td><img src='" . $gambar . "' class='img-preview' alt='Foto Produk'></td>";
                             echo "<td><strong>" . $row['nama_produk'] . "</strong></td>";
+                            echo "<td>" . $row['kategori'] . "</td>";
                             echo "<td>" . $harga_rp . "</td>";
                             echo "<td>" . $row['stok'] . "</td>";
                             echo "<td>
@@ -95,7 +97,7 @@ if (!$result_produk) {
                         }
                     } 
                     else {
-                        echo "<tr><td colspan='6' style='text-align: center; padding: 30px; font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; color: var(--color-main); text-transform: uppercase; font-size: 12px;'>Gudang masih kosong. Silakan tambah produk baru!</td></tr>";
+                        echo "<tr><td colspan='7' style='text-align: center; padding: 30px; font-family: Segoe UI, Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; color: var(--color-main); text-transform: uppercase; font-size: 12px;'>Gudang masih kosong. Silakan tambah produk baru!</td></tr>";
                     }
                     ?>
                 </tbody>

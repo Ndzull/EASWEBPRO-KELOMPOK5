@@ -16,7 +16,6 @@ if (!isset($_GET['id'])) {
 
 $id_produk = $_GET['id'];
 
-// Ambil data produk saat ini
 $ambil_data = $conn->query("SELECT * FROM produk WHERE id_produk = '$id_produk'");
 if ($ambil_data->num_rows == 0) {
     header("Location: admin_produk.php");
@@ -24,16 +23,14 @@ if ($ambil_data->num_rows == 0) {
 }
 $data_saat_ini = $ambil_data->fetch_assoc();
 
-// ===================================================
-// PROSES PENGOLAHAN DATA UPDATE
-// ===================================================
+
 if (isset($_POST['edit'])) {
     $nama_produk = $_POST['nama_produk'];
+    $kategori    = $_POST['kategori'];
     $harga       = $_POST['harga'];
     $stok        = $_POST['stok'];
     $deskripsi   = $_POST['deskripsi'];
 
-    // Menangkap data file gambar
     $nama_file   = $_FILES['gambar']['name'];
     $ukuran_file = $_FILES['gambar']['size'];
     $tmp_name    = $_FILES['gambar']['tmp_name'];
@@ -44,6 +41,7 @@ if (isset($_POST['edit'])) {
         // JIKA GAMBAR TIDAK DIGANTI (Update text saja)
         $query = "UPDATE produk SET 
                   nama_produk = '$nama_produk', 
+                  kategori = '$kategori',
                   harga = '$harga', 
                   stok = '$stok', 
                   deskripsi = '$deskripsi' 
@@ -79,6 +77,7 @@ if (isset($_POST['edit'])) {
                 // Update database dengan gambar baru
                 $query = "UPDATE produk SET 
                           nama_produk = '$nama_produk', 
+                          kategori = '$kategori',
                           harga = '$harga', 
                           stok = '$stok', 
                           deskripsi = '$deskripsi',
@@ -211,6 +210,20 @@ if (isset($_POST['edit'])) {
                 <div class="form-group">
                     <label class="form-label">Nama Produk</label>
                     <input type="text" name="nama_produk" class="form-control" value="<?php echo htmlspecialchars($data_saat_ini['nama_produk']); ?>" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Kategori Produk</label>
+                    <select name="kategori" class="form-control" required style="font-family: 'Segoe UI', sans-serif;">
+                        <option value="" disabled selected hidden>-- Pilih Kategori --</option>
+                        <option value="joran">Joran Pancing</option>
+                        <option value="reel">Reel Pancing</option>
+                        <option value="benang">Senar Pancing</option>
+                        <option value="kail">Kail Pancing</option>
+                        <option value="umpan">Umpan Pancing</option>
+                        <option value="aksesoris">Aksesoris Pancing</option>
+                        <option value="bundle">Bundle Pancing</option>
+                    </select>
                 </div>
 
                 <div style="display: flex; gap: 20px;">

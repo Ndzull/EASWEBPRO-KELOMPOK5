@@ -14,6 +14,7 @@ CREATE TABLE users (
 CREATE TABLE produk (
     id_produk INT AUTO_INCREMENT PRIMARY KEY,
     nama_produk VARCHAR(100) NOT NULL,
+    kategori VARCHAR(50) NOT NULL,
     harga INT NOT NULL,
     stok INT NOT NULL,
     deskripsi TEXT,

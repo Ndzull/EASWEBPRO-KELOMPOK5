@@ -11,6 +11,7 @@ $pesan = "";
 
 if (isset($_POST['tambah'])) {
     $nama_produk = $_POST['nama_produk'];
+    $kategori    = $_POST['kategori'];
     $harga       = $_POST['harga'];
     $stok        = $_POST['stok'];
     $deskripsi   = $_POST['deskripsi'];
@@ -37,8 +38,8 @@ if (isset($_POST['tambah'])) {
                 $folder_tujuan = 'uploads/' . $nama_file_baru;
                 
                 if (move_uploaded_file($tmp_name, $folder_tujuan)) {
-                    $query = "INSERT INTO produk (nama_produk, harga, stok, deskripsi, gambar) 
-                              VALUES ('$nama_produk', '$harga', '$stok', '$deskripsi', '$nama_file_baru')";
+                    $query = "INSERT INTO produk (nama_produk, kategori, harga, stok, deskripsi, gambar) 
+                              VALUES ('$nama_produk', '$kategori', '$harga', '$stok', '$deskripsi', '$nama_file_baru')";
                     
                     if ($conn->query($query)) {
                         echo "<script>
@@ -182,6 +183,21 @@ if (isset($_POST['tambah'])) {
                 <div class="form-group">
                     <label class="form-label">Nama Produk</label>
                     <input type="text" name="nama_produk" class="form-control" placeholder="Contoh: Pancing Perkoro" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Kategori Produk</label>
+                    <select name="kategori" class="form-control" required style="font-family: 'Segoe UI', sans-serif;">
+                        <option value="" disabled selected hidden>-- Pilih Kategori --</option>
+                        <option value="joran">Joran Pancing</option>
+                        <option value="reel">Reel Pancing</option>
+                        <option value="benang">Senar Pancing</option>
+                        <option value="kail">Kail Pancing</option>
+                        <option value="umpan">Umpan Pancing</option>
+                        <option value="aksesoris">Aksesoris Pancing</option>
+                        <option value="bundle">Bundle Pancing</option>
+
+                    </select>
                 </div>
 
                 <div style="display: flex; gap: 20px;">
