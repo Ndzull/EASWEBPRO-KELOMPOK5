@@ -61,10 +61,29 @@ include 'koneksi.php';
                 
                 <?php if (isset($_SESSION['status_login'])): ?>
                     <?php 
+                        // Ambil nama depan
                         $nama_depan = explode(' ', trim($_SESSION['nama_user']))[0]; 
+                        
+                        // Tarik foto profil dari database khusus untuk navbar
+                        $id_user_nav = $_SESSION['id_user'];
+                        $query_nav = $conn->query("SELECT foto_profil FROM users WHERE id = '$id_user_nav'");
+                        $data_nav = $query_nav->fetch_assoc();
+                        $foto_nav = !empty($data_nav['foto_profil']) ? $data_nav['foto_profil'] : 'assets/ijulfoto.jpeg';
                     ?>
                     <span style="font-family: 'Jockey One', sans-serif; color: var(--color-text-dark);">Halo, <?php echo htmlspecialchars($nama_depan); ?>!</span>
-                    <a href="logout.php" class="btn-login" style="background-color: #a86060; border-color: #181D31; color: white;">Logout</a>
+                    
+                    <a href="profil.php" title="Profil Saya" style="display: flex; align-items: center;">
+                        <img src="<?php echo htmlspecialchars($foto_nav); ?>" alt="Avatar" style="
+                            width: 38px; 
+                            height: 38px; 
+                            border-radius: 50%; 
+                            object-fit: cover; 
+                            border: 2px solid var(--color-text-dark); 
+                            background-color: white;
+                            cursor: pointer;
+                        ">
+                    </a>
+                    <a href="logout.php" class="btn-logout-nav">Logout</a>
                 <?php else: ?>
                     <a href="loginpage.php" class="btn-login">Login</a>
                 <?php endif; ?>

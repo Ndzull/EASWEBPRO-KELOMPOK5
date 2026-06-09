@@ -50,6 +50,7 @@ if (isset($_POST['login'])) {
         $_SESSION['nama_user'] = $user_data['nama_depan'] . " " . $user_data['nama_belakang']; 
         $_SESSION['role'] = $user_data['role']; 
         $_SESSION['tanggal_lahir'] = $user_data['tanggal_lahir'];
+        $_SESSION['id_user'] = $user_data['id'];
 
         if ($_SESSION['role'] == 'admin') {
             header("Location: admin_dashboard.php");

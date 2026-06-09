@@ -7,8 +7,9 @@ CREATE TABLE users (
     tanggal_lahir DATE NOT NULL,
     role ENUM('admin', 'member') NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
-);
+    password VARCHAR(255) NOT NULL,
+    foto_profil VARCHAR(255) NOT NULL
+);  
 
 -- Tabel Produk
 CREATE TABLE produk (
@@ -46,4 +47,12 @@ CREATE TABLE detail_pesanan (
     id_produk INT NOT NULL,
     jumlah_beli INT NOT NULL,
     harga_satuan INT NOT NULL
+);
+
+-- Tabel Keranjang 
+CREATE TABLE keranjang (
+    id_keranjang INT AUTO_INCREMENT PRIMARY KEY,
+    id_user INT NOT NULL,
+    id_produk INT NOT NULL,
+    jumlah INT NOT NULL
 );

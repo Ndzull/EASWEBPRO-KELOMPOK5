@@ -59,3 +59,56 @@ document.addEventListener("DOMContentLoaded", function () {
     startAutoSlide();
 
 });
+
+
+// Chatbox
+const API_KEY = "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";
+const API_URL = "https://api.groq.com/openai/v1/chat/completions";
+
+function toggleChat() {
+    const chatbox = document.getElementById('aiChatbox');
+    if (chatbox) chatbox.classList.toggle('active');
+}
+
+async function sendMessage() {
+    const input = document.getElementById('userInput');
+    const chatBody = document.getElementById('chatBody');
+    if (!input || !chatBody) return;
+
+    const userText = input.value.trim();
+    if (userText === "") return;
+
+    chatBody.innerHTML += `<div class="msg user-msg">${userText}</div>`;
+    input.value = "";
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    const loadingId = "loading-" + Date.now();
+    chatBody.innerHTML += `<div class="msg ai-msg" id="${loadingId}">...</div>`;
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    try {
+        const response = await fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + API_KEY
+            },
+            body: JSON.stringify({
+                model: "llama-3.1-8b-instant",
+                messages: [
+                    { role: "system", content: "Kamu adalah asisten Strike Gear, marketplace alat pancing. Jawab singkat dan ramah." },
+                    { role: "user", content: userText }
+                ]
+            })
+        });
+        const data = await response.json();
+        if (data.error) {
+            document.getElementById(loadingId).innerText = "Error: " + data.error.message;
+        } else {
+            document.getElementById(loadingId).innerText = data.choices[0].message.content;
+        }
+    } catch (error) {
+        document.getElementById(loadingId).innerText = "Koneksi gagal.";
+    }
+    chatBody.scrollTop = chatBody.scrollHeight;
+}
